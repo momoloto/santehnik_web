@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="32" height="32"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Фон
+        ctx.fillStyle = '#2563eb';
+        ctx.fillRect(0, 0, 32, 32);
+        
+        // Кран/смеситель
+        ctx.fillStyle = 'white';
+        
+        // Основание крана
+        ctx.fillRect(12, 20, 8, 4);
+        
+        // Корпус крана
+        ctx.fillRect(14, 16, 4, 6);
+        
+        // Ручка крана
+        ctx.fillRect(15, 12, 2, 4);
+        
+        // Выход воды (треугольник)
+        ctx.beginPath();
+        ctx.moveTo(16, 8);
+        ctx.lineTo(14, 10);
+        ctx.lineTo(18, 10);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Капли воды
+        ctx.fillStyle = '#93c5fd';
+        ctx.beginPath();
+        ctx.arc(16, 6, 1, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(14, 5, 0.8, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(18, 5, 0.8, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // Труба
+        ctx.fillStyle = 'white';
+        ctx.fillRect(15, 24, 2, 4);
+        
+        // Буква "A"
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 8px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('A', 16, 30);
+        
+        // Скачать как PNG
+        const link = document.createElement('a');
+        link.download = 'favicon.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    </script>
+</body>
+</html>

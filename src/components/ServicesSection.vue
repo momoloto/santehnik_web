@@ -5,37 +5,43 @@
       <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
         <h2 class="mb-4">Наши услуги</h2>
         <p class="text-muted-foreground text-lg">
-          Более 126 видов сантехнических услуг для квартир, домов и офисов
+          Более 70 видов сантехнических услуг для квартир, домов и офисов
         </p>
       </div>
 
       <!-- Categories Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div class="grid grid-cols-3 gap-3 md:gap-6 lg:gap-8">
         <div
           v-for="category in serviceCategories"
           :key="category.id"
           @click="handleCategoryClick(category.id)"
-          class="group bg-white border-2 border-border rounded-2xl p-8 hover:border-primary hover:shadow-xl transition-all cursor-pointer"
+          class="group bg-white border-2 border-border rounded-2xl p-3 md:p-8 hover:border-primary hover:shadow-xl transition-all cursor-pointer flex flex-col"
         >
-          <!-- Icon -->
-          <div class="mb-6">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-2xl group-hover:bg-primary/20 transition-colors">
-              <span class="text-5xl">{{ category.icon }}</span>
+          <!-- Image -->
+          <div class="mb-2 md:mb-6 flex-shrink-0 overflow-hidden rounded-xl">
+            <div class="relative w-full h-24 md:h-40 bg-gray-100">
+              <img 
+                :src="getCategoryImage(category.id).url" 
+                :alt="getCategoryImage(category.id).alt"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                @error="handleImageError"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </div>
 
           <!-- Content -->
-          <h3 class="mb-3 group-hover:text-primary transition-colors">
-            {{ category.name }}
-          </h3>
-          <p class="text-muted-foreground mb-6">
-            {{ category.count }} {{ category.count === 1 ? 'услуга' : 'услуг' }} в этой категории
-          </p>
+          <div class="flex-grow flex flex-col">
+            <h3 class="mb-2 md:mb-6 group-hover:text-primary transition-colors text-xs md:text-base leading-tight line-clamp-2">
+              {{ category.name }}
+            </h3>
+          </div>
 
           <!-- Button -->
-          <button class="btn btn-ghost gap-2 p-0 h-auto group-hover:text-primary">
+          <button class="btn btn-ghost gap-1 md:gap-2 p-0 h-auto group-hover:text-primary text-xs md:text-sm flex-shrink-0 mt-auto">
             Смотреть услуги
-            <ArrowRight class="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight class="h-3 w-3 md:h-4 md:w-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>
@@ -61,14 +67,16 @@
 
 <script setup>
 import { ArrowRight } from 'lucide-vue-next'
+import { useRouter } from 'vue-router'
 import { categories } from '../data/services.js'
+import { getCategoryImage } from '../data/category-images.js'
 
-const emit = defineEmits(['category-click'])
+const router = useRouter()
 
 const serviceCategories = categories.filter(category => category.id !== 'all')
 
 const handleCategoryClick = (categoryId) => {
-  emit('category-click', categoryId)
+  router.push(`/category/${categoryId}`)
 }
 
 const scrollToContact = () => {
@@ -76,5 +84,10 @@ const scrollToContact = () => {
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' })
   }
+}
+
+const handleImageError = (event) => {
+  // Если изображение не загрузилось, показываем fallback
+  event.target.style.display = 'none'
 }
 </script>

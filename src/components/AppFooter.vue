@@ -4,7 +4,7 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
         <!-- Company Info -->
         <div class="space-y-4">
-          <h3 class="text-white font-bold text-xl">СантехСервис</h3>
+          <h3 class="text-white font-bold text-xl">AskhatSanTekhnik</h3>
           <p class="text-sm text-gray-300">
             Профессиональные сантехнические услуги в Алматы. Быстро, качественно, с гарантией.
           </p>
@@ -44,8 +44,8 @@
             <li class="flex items-start gap-2 text-sm text-gray-300">
               <Phone class="h-4 w-4 mt-0.5 flex-shrink-0" />
               <div>
-                <a href="tel:+77001234567" class="hover:text-white transition-colors">
-                  +7 (700) 123-45-67
+                <a href="tel:+87477252026" class="hover:text-white transition-colors">
+                  +7 (747) 725-20-26
                 </a>
               </div>
             </li>
@@ -70,7 +70,7 @@
       <!-- Bottom Bar -->
       <div class="mt-12 pt-8 border-t border-gray-700">
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-          <p>© {{ currentYear }} СантехСервис. Все права защищены.</p>
+          <p>© {{ currentYear }} AskhatSanTekhnik. Все права защищены.</p>
           <div class="flex gap-6">
             <button class="hover:text-white transition-colors">
               Политика конфиденциальности

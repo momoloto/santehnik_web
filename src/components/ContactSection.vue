@@ -93,10 +93,10 @@
         <p class="mb-6 text-blue-100">
           Наша аварийная служба работает круглосуточно без выходных
         </p>
-        <a href="tel:+77001234567">
+        <a href="tel:+87477252026">
           <button class="btn btn-secondary btn-lg gap-2">
             <Phone class="h-5 w-5" />
-            +7 (700) 123-45-67
+            +7 (747) 725-20-26
           </button>
         </a>
       </div>
@@ -118,8 +118,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Телефон",
-    details: ["+7 (700) 123-45-67", "+7 (701) 987-65-43"],
-    link: "tel:+77001234567",
+    details: ["+7 (747) 725-20-26"],
+    link: "tel:+87477252026",
   },
   {
     icon: Mail,

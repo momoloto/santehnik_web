@@ -7,7 +7,7 @@
           @click="scrollToSection('#home')"
           class="flex-shrink-0"
         >
-          <h2 class="text-primary font-bold text-xl md:text-2xl">СантехСервис</h2>
+          <h2 class="text-primary font-bold text-xl md:text-2xl">AskhatSanTekhnik</h2>
         </button>
 
         <!-- Desktop Navigation -->
@@ -24,9 +24,9 @@
 
         <!-- Desktop CTA -->
         <div class="hidden md:flex items-center gap-4">
-          <a href="tel:+77001234567" class="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+          <a href="tel:+87477252026" class="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
             <Phone class="h-5 w-5" />
-            <span class="font-medium">+7 (700) 123-45-67</span>
+            <span class="font-medium">+7 (747) 725-20-26</span>
           </a>
           <button 
             @click="scrollToSection('#contact')"
@@ -64,9 +64,9 @@
             </button>
           </nav>
           <div class="pt-4 border-t border-border mt-4">
-            <a href="tel:+77001234567" class="flex items-center gap-2 text-primary mb-4 font-medium">
+            <a href="tel:+87477252026" class="flex items-center gap-2 text-primary mb-4 font-medium">
               <Phone class="h-5 w-5" />
-              <span>+7 (700) 123-45-67</span>
+              <span>+7 (747) 725-20-26</span>
             </a>
             <button 
               @click="scrollToSection('#contact')"

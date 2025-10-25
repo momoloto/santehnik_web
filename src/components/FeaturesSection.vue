@@ -10,17 +10,17 @@
       </div>
 
       <!-- Features Grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      <div class="grid grid-cols-3 gap-4 md:gap-8 lg:gap-10">
         <div 
           v-for="feature in features"
           :key="feature.title"
           class="text-center"
         >
-          <div class="inline-flex p-4 bg-white rounded-full shadow-md mb-4">
-            <component :is="feature.icon" class="h-8 w-8 text-primary" />
+          <div class="inline-flex p-2 md:p-4 bg-white rounded-full shadow-md mb-2 md:mb-4">
+            <component :is="feature.icon" class="h-4 w-4 md:h-8 md:w-8 text-primary" />
           </div>
-          <h3 class="mb-2">{{ feature.title }}</h3>
-          <p class="text-muted-foreground">{{ feature.description }}</p>
+          <h3 class="mb-1 md:mb-2 text-sm md:text-base">{{ feature.title }}</h3>
+          <p class="text-muted-foreground text-xs md:text-sm">{{ feature.description }}</p>
         </div>
       </div>
 
