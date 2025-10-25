@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СантехСервис - Профессиональные сантехнические услуги в Алматы</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .header {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background: #1d4ed8;
+        }
+        .features {
+            padding: 3rem 0;
+            background: white;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 1rem;
+            background: #f8fafc;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .contact {
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="color: #2563eb; font-weight: bold; font-size: 1.5rem;">СантехСервис</h2>
+                <nav style="display: flex; gap: 2rem;">
+                    <a href="#home" style="color: #1e293b; text-decoration: none;">Главная</a>
+                    <a href="#services" style="color: #1e293b; text-decoration: none;">Услуги</a>
+                    <a href="#about" style="color: #1e293b; text-decoration: none;">О компании</a>
+                    <a href="#contact" style="color: #1e293b; text-decoration: none;">Контакты</a>
+                </nav>
+                <a href="tel:+77001234567" style="color: #2563eb; text-decoration: none; font-weight: 500;">+7 (700) 123-45-67</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Профессиональные сантехнические услуги в Алматы</h1>
+                <p>Быстрый выезд мастера, качественная работа и гарантия на все виды услуг. Работаем без выходных с 8:00 до 22:00</p>
+                <a href="#contact" class="btn">Вызвать мастера</a>
+            </div>
+        </section>
+
+        <section id="services" class="features">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">Наши услуги</h2>
+                <p style="text-align: center; color: #64748b; font-size: 1.125rem;">Более 126 видов сантехнических услуг для квартир, домов и офисов</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🛁</div>
+                        <h3>Установка сантехники</h3>
+                        <p>13 услуг в этой категории</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔥</div>
+                        <h3>Монтаж систем отопления</h3>
+                        <p>20 услуг в этой категории</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">♨️</div>
+                        <h3>Полотенцесушители и радиаторы</h3>
+                        <p>10 услуг в этой категории</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚙️</div>
+                        <h3>Насосное оборудование</h3>
+                        <p>13 услуг в этой категории</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔥</div>
+                        <h3>Котельное оборудование</h3>
+                        <p>10 услуг в этой категории</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚰</div>
+                        <h3>Общие сантехнические работы</h3>
+                        <p>60 услуг в этой категории</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="features">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">Почему выбирают нас</h2>
+                <p style="text-align: center; color: #64748b; font-size: 1.125rem;">Мы обеспечиваем высокое качество работ и индивидуальный подход к каждому клиенту</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3>Быстрый выезд</h3>
+                        <p>Мастер приедет в течение часа после звонка</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Гарантия качества</h3>
+                        <p>Гарантия на все виды работ до 2 лет</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>Опытные мастера</h3>
+                        <p>Работают только квалифицированные специалисты</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Доступные цены</h3>
+                        <p>Честные цены без скрытых доплат</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">Свяжитесь с нами</h2>
+                <p style="text-align: center; color: #64748b; font-size: 1.125rem;">Оставьте заявку и наш специалист свяжется с вами для уточнения деталей</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>Заказать звонок</h3>
+                        <form style="display: flex; flex-direction: column; gap: 1rem;">
+                            <input type="text" placeholder="Ваше имя" style="padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;">
+                            <input type="tel" placeholder="Телефон" style="padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;">
+                            <textarea placeholder="Опишите вашу проблему..." rows="4" style="padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;"></textarea>
+                            <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>Контакты</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div>
+                                <strong>Телефон:</strong><br>
+                                <a href="tel:+77001234567" style="color: #2563eb;">+7 (700) 123-45-67</a><br>
+                                <a href="tel:+77019876543" style="color: #2563eb;">+7 (701) 987-65-43</a>
+                            </div>
+                            <div>
+                                <strong>Email:</strong><br>
+                                <a href="mailto:info@santehservice.kz" style="color: #2563eb;">info@santehservice.kz</a><br>
+                                <a href="mailto:support@santehservice.kz" style="color: #2563eb;">support@santehservice.kz</a>
+                            </div>
+                            <div>
+                                <strong>Адрес:</strong><br>
+                                г. Алматы, ул. Абая, 150
+                            </div>
+                            <div>
+                                <strong>Время работы:</strong><br>
+                                Пн-Вс: 8:00 - 22:00<br>
+                                Аварийная служба 24/7
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: #2563eb; color: white; padding: 2rem; border-radius: 1rem; text-align: center; margin-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Срочная помощь? Звоните прямо сейчас!</h3>
+                    <p style="margin-bottom: 1.5rem; color: #93c5fd;">Наша аварийная служба работает круглосуточно без выходных</p>
+                    <a href="tel:+77001234567" class="btn" style="background: white; color: #2563eb;">+7 (700) 123-45-67</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 СантехСервис. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
