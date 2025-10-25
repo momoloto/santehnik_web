@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-foreground text-background">
-    <div class="container py-12 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
         <!-- Company Info -->
         <div class="space-y-4">

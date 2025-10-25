@@ -1,6 +1,6 @@
 <template>
   <section id="contact" class="py-12 md:py-20 bg-gradient-to-br from-blue-50 to-white">
-    <div class="container">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
         <h2 class="mb-4">Свяжитесь с нами</h2>
@@ -89,7 +89,7 @@
 
       <!-- Emergency Banner -->
       <div class="mt-12 md:mt-16 bg-primary text-primary-foreground rounded-lg p-6 md:p-8 text-center">
-        <h3 class="mb-2 text-white font-semibold">Срочная помощь? Звоните прямо сейчас!</h3>
+        <h3 class="mb-2 text-white">Срочная помощь? Звоните прямо сейчас!</h3>
         <p class="mb-6 text-blue-100">
           Наша аварийная служба работает круглосуточно без выходных
         </p>

@@ -1,11 +1,11 @@
 <template>
   <section id="home" class="relative bg-gradient-to-br from-blue-50 to-white py-12 md:py-20 lg:py-28">
-    <div class="container">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         <!-- Content -->
         <div class="space-y-6 md:space-y-8">
           <div class="space-y-4">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            <h1 class="leading-tight">
               Профессиональные сантехнические услуги в Алматы
             </h1>
             <p class="text-muted-foreground text-lg">

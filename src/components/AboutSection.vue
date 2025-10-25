@@ -1,75 +1,66 @@
 <template>
   <section id="about" class="py-12 md:py-20 bg-white">
-    <div class="container">
-      <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-        <!-- Content -->
-        <div class="space-y-6">
-          <div>
-            <h2 class="mb-4">О нашей компании</h2>
-            <p class="text-muted-foreground text-lg mb-6">
-              СантехСервис — это команда профессионалов с многолетним опытом работы в сфере сантехнических услуг в Алматы.
-            </p>
-            <p class="text-muted-foreground mb-6">
-              Мы специализируемся на всех видах сантехнических работ: от простого ремонта смесителя до сложного монтажа систем отопления и водоснабжения.
-            </p>
-          </div>
-
-          <!-- Features -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <!-- Images Grid -->
+        <div class="grid grid-cols-2 gap-4">
           <div class="space-y-4">
-            <div 
-              v-for="feature in aboutFeatures"
-              :key="feature"
-              class="flex items-center gap-3"
-            >
-              <CheckCircle class="h-5 w-5 text-primary flex-shrink-0" />
-              <span>{{ feature }}</span>
+            <div class="aspect-square rounded-lg overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1687951276836-06efbfda608b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBiYXRocm9vbSUyMGludGVyaW9yfGVufDF8fHx8MTc2MTI5NDI4NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                alt="Современная ванная комната"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="aspect-[4/3] rounded-lg overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1661045327753-3f2a047d00a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraXRjaGVuJTIwc2luayUyMGZhdWNldHxlbnwxfHx8fDE3NjEzMjY1OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                alt="Кухонная раковина"
+                class="w-full h-full object-cover"
+              />
             </div>
           </div>
-
-          <!-- CTA -->
-          <div class="pt-4">
-            <button 
-              @click="scrollToContact"
-              class="btn btn-primary btn-lg"
-            >
-              Связаться с нами
-            </button>
+          <div class="pt-8">
+            <div class="aspect-[3/4] rounded-lg overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1729986694893-facaf4bce2e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWF0aW5nJTIwc3lzdGVtJTIwYm9pbGVyfGVufDF8fHx8MTc2MTM4OTk4OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                alt="Отопительная система"
+                class="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
 
-        <!-- Image -->
-        <div class="relative">
-          <div class="aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
-            <img
-              src="https://images.unsplash.com/photo-1581578731548-c6a0c3f2f2c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbHVtYmVyJTIwd29ya2luZyUyMHRvb2xzfGVufDF8fHx8MTc2MTM4OTk4Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Сантехник с инструментами"
-              class="w-full h-full object-cover"
-            />
+        <!-- Content -->
+        <div class="space-y-6">
+          <div>
+            <h2 class="mb-4">О компании СантехСервис</h2>
+            <p class="text-muted-foreground text-lg mb-4">
+              Мы профессиональная команда сантехников с более чем 10-летним опытом работы в Алматы. 
+              Специализируемся на всех видах сантехнических работ для жилых и коммерческих объектов.
+            </p>
+            <p class="text-muted-foreground">
+              Наша цель — предоставить качественные услуги по доступным ценам. Мы ценим время наших 
+              клиентов и гарантируем быстрое решение любых сантехнических проблем.
+            </p>
           </div>
-          
-          <!-- Floating cards -->
-          <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg">
-            <div class="flex items-center gap-3">
-              <div class="bg-primary/10 p-2 rounded-full">
-                <Wrench class="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <p class="text-sm text-muted-foreground">Профессиональные инструменты</p>
-                <p class="font-semibold">Современное оборудование</p>
-              </div>
+
+          <div class="space-y-3">
+            <div 
+              v-for="advantage in advantages"
+              :key="advantage"
+              class="flex items-start gap-3"
+            >
+              <CheckCircle class="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <p class="text-foreground">{{ advantage }}</p>
             </div>
           </div>
 
-          <div class="absolute -top-4 -right-4 bg-white p-4 rounded-lg shadow-lg">
-            <div class="flex items-center gap-3">
-              <div class="bg-primary/10 p-2 rounded-full">
-                <Star class="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <p class="text-sm text-muted-foreground">Рейтинг</p>
-                <p class="font-semibold">4.9/5</p>
-              </div>
-            </div>
+          <div class="pt-4 border-t border-border">
+            <p class="text-sm text-muted-foreground">
+              Мы постоянно повышаем квалификацию наших мастеров и следим за новыми технологиями 
+              в сантехнической отрасли, чтобы предоставлять вам лучший сервис.
+            </p>
           </div>
         </div>
       </div>
@@ -80,13 +71,13 @@
 <script setup>
 import { CheckCircle, Wrench, Star } from 'lucide-vue-next'
 
-const aboutFeatures = [
-  "Более 10 лет успешной работы",
-  "Квалифицированные мастера с опытом",
-  "Современное оборудование и инструменты",
-  "Гарантия на все виды работ",
-  "Прозрачное ценообразование",
-  "Работаем без выходных"
+const advantages = [
+  "Работаем официально с договором и чеками",
+  "Бесплатная диагностика при заказе ремонта",
+  "Используем профессиональное оборудование",
+  "Убираем за собой после выполнения работ",
+  "Консультируем по эксплуатации сантехники",
+  "Помогаем с выбором материалов и оборудования",
 ]
 
 const scrollToContact = () => {

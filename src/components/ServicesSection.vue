@@ -1,6 +1,6 @@
 <template>
   <section id="services" class="py-12 md:py-20 bg-white">
-    <div class="container">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
         <h2 class="mb-4">Наши услуги</h2>
@@ -25,7 +25,7 @@
           </div>
 
           <!-- Content -->
-          <h3 class="mb-3 group-hover:text-primary transition-colors font-semibold">
+          <h3 class="mb-3 group-hover:text-primary transition-colors">
             {{ category.name }}
           </h3>
           <p class="text-muted-foreground mb-6">
