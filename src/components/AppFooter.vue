@@ -29,11 +29,14 @@
         <div>
           <h4 class="mb-4 text-white font-semibold">Услуги</h4>
           <ul class="space-y-2 text-sm text-gray-300">
-            <li>Устранение протечек</li>
-            <li>Ремонт сантехники</li>
-            <li>Установка котлов</li>
-            <li>Монтаж водопровода</li>
-            <li>Монтаж канализации</li>
+            <li v-for="service in services" :key="service.name">
+              <button
+                @click="scrollToService(service.category)"
+                class="hover:text-white transition-colors text-left"
+              >
+                {{ service.name }}
+              </button>
+            </li>
           </ul>
         </div>
 
@@ -67,20 +70,6 @@
         </div>
       </div>
 
-      <!-- Bottom Bar -->
-      <div class="mt-12 pt-8 border-t border-gray-700">
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-          <p>© {{ currentYear }} AskhatSanTekhnik. Все права защищены.</p>
-          <div class="flex gap-6">
-            <button class="hover:text-white transition-colors">
-              Политика конфиденциальности
-            </button>
-            <button class="hover:text-white transition-colors">
-              Условия использования
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   </footer>
 </template>
@@ -97,10 +86,35 @@ const navigation = [
   { name: "Контакты", href: "#contact" },
 ]
 
+const services = [
+  { name: "Установка сантехники", category: "installation" },
+  { name: "Монтаж системы отопления, водоснабжения и канализации", category: "systems" },
+  { name: "Монтаж полотенцесушителей и радиаторов", category: "radiators" },
+  { name: "Монтаж насосного оборудования", category: "pumps" },
+  { name: "Монтаж котельного оборудования", category: "boilers" },
+  { name: "Общие сантехнические работы", category: "general" },
+]
+
 const scrollToSection = (href) => {
   const element = document.querySelector(href)
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+const scrollToService = (category) => {
+  // Сначала прокручиваем к секции услуг
+  const servicesSection = document.querySelector('#services')
+  if (servicesSection) {
+    servicesSection.scrollIntoView({ behavior: 'smooth' })
+    
+    // Затем через небольшую задержку прокручиваем к конкретной категории
+    setTimeout(() => {
+      const categoryElement = document.querySelector(`[data-category="${category}"]`)
+      if (categoryElement) {
+        categoryElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    }, 500)
   }
 }
 </script>
