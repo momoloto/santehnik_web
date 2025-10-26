@@ -28,11 +28,14 @@
                 <div>
                   <input
                     v-model="formData.phone"
+                    @input="handlePhoneInput"
                     type="tel"
-                    placeholder="Телефон"
+                    placeholder="Телефон (например: +7 747 725-20-26)"
                     class="input w-full"
+                    maxlength="20"
                     required
                   />
+                  <p v-if="phoneError" class="text-red-500 text-xs mt-1">{{ phoneError }}</p>
                 </div>
                 <div>
                   <textarea
@@ -114,6 +117,47 @@ const formData = ref({
   message: ''
 })
 
+// Валидация телефона
+const phoneError = ref('')
+
+const validatePhone = () => {
+  const phone = formData.value.phone
+  
+  // Очищаем предыдущую ошибку
+  phoneError.value = ''
+  
+  // Проверяем минимальную длину (минимум 10 цифр)
+  const digitsOnly = phone.replace(/\D/g, '')
+  if (digitsOnly.length < 10) {
+    phoneError.value = 'Номер телефона должен содержать не менее 10 цифр'
+    return false
+  }
+  
+  // Проверяем максимальную длину
+  if (phone.length > 20) {
+    phoneError.value = 'Номер телефона не должен превышать 20 символов'
+    return false
+  }
+  
+  // Проверяем допустимые символы (только цифры, +, пробелы, дефисы, скобки)
+  const phoneRegex = /^[\d\s\+\-\(\)]+$/
+  if (!phoneRegex.test(phone)) {
+    phoneError.value = 'Телефон может содержать только цифры, +, пробелы, дефисы и скобки'
+    return false
+  }
+  
+  return true
+}
+
+// Watch для валидации в реальном времени
+const handlePhoneInput = () => {
+  if (formData.value.phone) {
+    validatePhone()
+  } else {
+    phoneError.value = ''
+  }
+}
+
 const contactInfo = [
   {
     icon: Phone,
@@ -141,9 +185,49 @@ const contactInfo = [
   },
 ]
 
-const handleSubmit = () => {
-  // В реальном приложении здесь была бы отправка данных на сервер
-  alert('Спасибо! Мы свяжемся с вами в ближайшее время.')
-  formData.value = { name: '', phone: '', message: '' }
+const handleSubmit = async () => {
+  // Валидация перед отправкой
+  if (!validatePhone()) {
+    return
+  }
+  
+  try {
+    const botToken = '7949229060:AAFaSwYI--juUSoo-yiTPQDVCDmOl4MnPPU'
+    const chatId = '-4929456103'
+    
+    const message = `
+<b>Новая заявка с сайта</b>
+
+👤 Имя: ${formData.value.name}
+📞 Телефон: ${formData.value.phone}
+💬 Сообщение: ${formData.value.message}
+    `.trim()
+    
+    // Отправка через Telegram Bot API
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`
+    
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+        parse_mode: 'HTML',
+      }),
+    })
+    
+    if (response.ok) {
+      alert('Спасибо! Мы свяжемся с вами в ближайшее время.')
+      formData.value = { name: '', phone: '', message: '' }
+      phoneError.value = ''
+    } else {
+      alert('Произошла ошибка. Пожалуйста, попробуйте позже.')
+    }
+  } catch (error) {
+    console.error('Ошибка отправки:', error)
+    alert('Произошла ошибка. Пожалуйста, попробуйте позже.')
+  }
 }
 </script>
