@@ -16,7 +16,7 @@ export const categoryImages = {
     fallback: "♨️"
   },
   pumps: {
-    url: "https://images.unsplash.com/photo-1581092918484-8313e1f7e837?w=800&h=600&fit=crop&q=80",
+    url: "/nasos.jpg",
     alt: "Насосное оборудование",
     fallback: "⚙️"
   },

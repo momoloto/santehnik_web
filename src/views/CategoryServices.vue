@@ -40,7 +40,7 @@
           
           <!-- Price -->
           <div class="flex-shrink-0 mr-2 md:mr-4">
-            <span class="text-base md:text-lg font-bold text-gray-900">{{ service.price }}</span>
+            <span class="text-sm md:text-lg font-bold text-gray-900 whitespace-nowrap">{{ service.price }}</span>
           </div>
           
           <!-- Order Button -->
