@@ -1,68 +1,55 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen bg-white">
     <!-- Header -->
-    <div class="bg-white shadow-sm">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div class="flex items-center gap-4">
+    <div class="border-b">
+      <div class="container mx-auto px-3 md:px-6 py-3 md:py-6">
+        <div class="flex items-center gap-2 md:gap-4">
           <button 
             @click="goBack"
-            class="btn btn-ghost p-2 hover:bg-gray-100 rounded-lg"
+            class="p-1 md:p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <ArrowLeft class="h-5 w-5" />
+            <ArrowLeft class="h-4 w-4 md:h-5 md:w-5 text-gray-600" />
           </button>
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl overflow-hidden bg-gray-100">
-              <img 
-                :src="getCategoryImage(categoryId).url" 
-                :alt="categoryData.name"
-                class="w-full h-full object-cover"
-                @error="handleImageError"
-              />
-            </div>
-            <div>
-              <h1 class="text-2xl font-bold">{{ categoryData.name }}</h1>
-              <p class="text-muted-foreground">{{ services.length }} {{ services.length === 1 ? 'услуга' : 'услуг' }}</p>
-            </div>
+          <div>
+            <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">{{ categoryData.name }}</h1>
+            <p class="text-xs md:text-sm text-gray-500 mt-1">
+              {{ services.length }} {{ getServiceCountText() }}
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-      <!-- Services List -->
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Services List -->
+    <div class="container mx-auto px-3 md:px-6 py-4 md:py-8">
+      <div class="space-y-0">
         <div
           v-for="service in services"
           :key="service.id"
-          class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 group"
+          class="flex items-center gap-2 md:gap-4 p-2 md:p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors group"
         >
-          <!-- Service Image -->
-          <div class="relative h-48 bg-gray-100 overflow-hidden">
-            <img 
-              :src="getServiceImage(service.title, service.category)" 
-              :alt="service.title"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              @error="handleImageError"
-              loading="lazy"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-            <div class="absolute bottom-3 left-3 right-3">
-              <h3 class="font-semibold text-white text-sm md:text-base line-clamp-2">{{ service.title }}</h3>
-            </div>
+          <!-- Icon -->
+          <div class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center">
+            <span class="text-xl md:text-2xl">{{ service.icon }}</span>
           </div>
           
-          <!-- Service Info -->
-          <div class="p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-lg font-bold text-primary">{{ service.price }}</span>
-              <button 
-                @click="contactService(service)"
-                class="btn btn-primary btn-sm"
-              >
-                Заказать
-              </button>
-            </div>
+          <!-- Service Name -->
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold text-gray-900 text-sm md:text-base">{{ service.title }}</h3>
           </div>
+          
+          <!-- Price -->
+          <div class="flex-shrink-0 mr-2 md:mr-4">
+            <span class="text-base md:text-lg font-bold text-gray-900">{{ service.price }}</span>
+          </div>
+          
+          <!-- Order Button -->
+          <button 
+            @click="contactService(service)"
+            class="flex-shrink-0 px-3 py-2 md:px-6 text-sm md:text-base font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"
+          >
+            Заказать
+          </button>
         </div>
       </div>
 
@@ -72,39 +59,20 @@
           <span class="text-2xl">🔍</span>
         </div>
         <h3 class="text-xl font-semibold text-gray-900 mb-2">Услуги не найдены</h3>
-        <p class="text-muted-foreground mb-6">В данной категории пока нет доступных услуг</p>
+        <p class="text-gray-500 mb-6">В данной категории пока нет доступных услуг</p>
         <button @click="goBack" class="btn btn-primary">
           Вернуться к категориям
         </button>
-      </div>
-    </div>
-
-    <!-- Contact CTA -->
-    <div class="bg-white border-t">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-8 text-center">
-          <h3 class="text-xl font-semibold mb-2">Нужна консультация?</h3>
-          <p class="text-muted-foreground mb-6">
-            Наши специалисты помогут подобрать оптимальное решение для ваших задач
-          </p>
-          <button 
-            @click="scrollToContact"
-            class="btn btn-primary btn-lg"
-          >
-            Получить консультацию
-          </button>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ArrowLeft } from 'lucide-vue-next'
 import { servicesData, categories } from '../data/services.js'
-import { getServiceImage, getCategoryImage } from '../data/category-images.js'
 
 const route = useRoute()
 const router = useRouter()
@@ -124,13 +92,18 @@ const services = computed(() => {
   return servicesData.filter(service => service.category === categoryId.value)
 })
 
+const getServiceCountText = () => {
+  const count = services.value.length
+  if (count === 1) return 'услуга'
+  if (count >= 2 && count <= 4) return 'услуги'
+  return 'услуг'
+}
+
 const goBack = () => {
   router.push('/')
 }
 
 const contactService = (service) => {
-  // Здесь можно добавить логику для связи с клиентом
-  // Например, открыть модальное окно или перейти на страницу контактов
   console.log('Contact service:', service.title)
   scrollToContact()
 }
@@ -139,14 +112,7 @@ const scrollToContact = () => {
   router.push('/#contact')
 }
 
-const handleImageError = (event) => {
-  // Если изображение не загрузилось, показываем fallback
-  const fallback = getCategoryImage(categoryId.value)
-  event.target.src = fallback.url
-}
-
 onMounted(() => {
-  // Если категория не найдена, перенаправляем на главную
   if (!categories.find(cat => cat.id === categoryId.value)) {
     router.push('/')
   }
